@@ -1,7 +1,8 @@
 <?php
 
-use App\Http\Controllers\GenerateQrController;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Storage;
+use App\Http\Controllers\GenerateQrController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,3 +20,6 @@ Route::get('/', function () {
 });
 
 Route::post('generate-qr', GenerateQrController::class)->name('generate_qr');
+Route::get('download-template', function () {
+    return response()->download(resource_path('template.xlsx'));
+})->name('download_template');

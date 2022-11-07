@@ -23,18 +23,20 @@
     <form method="POST" action="{{ route('generate_qr') }}" enctype="multipart/form-data">
         <div class="d-flex flex-column justify-content-center align-items-center" style="height: 100vh; width: 100vw">
             @csrf
-            <div class="mb-3">
+            <div class="mb-5 h4 font-weight-bold">
+                Generate Batch QR Code
+            </div>
+            <div class="mb-2">
                 <input class="form-control" type="file" id="upload" name="upload" accept=".xlsx,.xls" required>
+            </div>
+            <div class="mb-3">
+                <a href="{{ route('download_template') }}" role="button" class="btn btn-link">Download Template</a>
             </div>
             <div>
                 <button type="submit" class="btn btn-primary">Generate QR Code</button>
             </div>
         </div>
     </form>
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
-    </script>
 </body>
 
 </html>
