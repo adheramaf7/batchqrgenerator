@@ -20,8 +20,9 @@ class GenerateQrController extends Controller
         $time = time();
         $folder = "generated/$time/";
 
+        $fileName = "generated-$time.zip";
         $zip = new ZipArchive;
-        $zip->open("generated-$time.zip", ZipArchive::CREATE | ZipArchive::OVERWRITE);
+        $zip->open($fileName, ZipArchive::CREATE | ZipArchive::OVERWRITE);
         foreach ($data[0] as $key => $item) {
             $image = QrCode::format('png')->size(400)->errorCorrection('H')->generate($item['value']);
 
@@ -34,6 +35,6 @@ class GenerateQrController extends Controller
 
         Storage::deleteDirectory($folder);
 
-        return response()->download("generated-$time.zip");
+        return response()->download($fileName);
     }
 }
